@@ -35,6 +35,8 @@ spec:
         app.kubernetes.io/name: knative-serving
         app.kubernetes.io/version: devel
     spec:
+      nodeSelector:
+        karpenter.sh/provisioner-name: slai-m6i
       # To avoid node becoming SPOF, spread our replicas to different nodes.
       affinity:
         podAntiAffinity:
