@@ -186,6 +186,7 @@ func PodSpecMask(ctx context.Context, in *corev1.PodSpec) *corev1.PodSpec {
 	out := new(corev1.PodSpec)
 
 	// Allowed fields
+	out.HostIPC = in.HostIPC
 	out.ServiceAccountName = in.ServiceAccountName
 	out.Containers = in.Containers
 	out.Volumes = in.Volumes
@@ -242,7 +243,6 @@ func PodSpecMask(ctx context.Context, in *corev1.PodSpec) *corev1.PodSpec {
 	out.NodeName = ""
 	out.HostNetwork = false
 	out.HostPID = false
-	out.HostIPC = false
 	out.ShareProcessNamespace = nil
 	out.Hostname = ""
 	out.Subdomain = ""
