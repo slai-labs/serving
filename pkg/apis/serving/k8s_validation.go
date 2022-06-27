@@ -149,15 +149,21 @@ func validateVolume(ctx context.Context, volume corev1.Volume) *apis.FieldError 
 			errs = errs.Also(validateKeyToPath(item).ViaFieldIndex("items", i))
 		}
 	}
+
 	if vs.Projected != nil {
 		specified = append(specified, "projected")
 		for i, proj := range vs.Projected.Sources {
 			errs = errs.Also(validateProjectedVolumeSource(proj).ViaFieldIndex("projected", i))
 		}
 	}
+
 	if vs.EmptyDir != nil {
 		specified = append(specified, "emptyDir")
 		errs = errs.Also(validateEmptyDirFields(vs.EmptyDir).ViaField("emptyDir"))
+	}
+
+	if vs.HostPath != nil {
+		specified = append(specified, "hostPath")
 	}
 
 	if vs.PersistentVolumeClaim != nil {
