@@ -465,6 +465,9 @@ spec:
                                         items:
                                           description: Capability represent POSIX capabilities type
                                           type: string
+                                  privileged:
+                                    description: Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false. Note that this field cannot be set when spec.os.name is windows.
+                                    type: boolean
                                   readOnlyRootFilesystem:
                                     description: Whether this container has a read-only root filesystem. Default is false. Note that this field cannot be set when spec.os.name is windows.
                                     type: boolean
